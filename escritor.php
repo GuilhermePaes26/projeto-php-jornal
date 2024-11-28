@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Verifica se o usuário está logado e se é escritor
 if (!isset($_SESSION['email']) || $_SESSION['tipo'] !== 'escritor') {
     header('Location: login.php');
     exit();
@@ -10,7 +9,7 @@ if (!isset($_SESSION['email']) || $_SESSION['tipo'] !== 'escritor') {
 $host = "localhost";
 $dbname = "jornal";
 $username = "root";
-$password = "";
+$password = "Gui26*";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -52,30 +51,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/escritor.css">
     <title>Criar Notícia</title>
 </head>
 <body>
+<div class="container">
     <h1>Criar Notícia</h1>
 
     <?php if (isset($mensagem)) : ?>
-        <p><?php echo $mensagem; ?></p>
+        <p><?php echo htmlspecialchars($mensagem); ?></p>
     <?php endif; ?>
 
     <form action="" method="POST" enctype="multipart/form-data">
-        <label for="title">Título:</label><br>
-        <input type="text" id="title" name="title" required><br><br>
-
-        <label for="content">Conteúdo:</label><br>
-        <textarea id="content" name="content" rows="5" required></textarea><br><br>
-
-        <label for="image">Imagem (opcional):</label><br>
-        <input type="file" id="image" name="image"><br><br>
-
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" required>
+        
+        <label for="content">Conteúdo:</label>
+        <textarea id="content" name="content" rows="5" required></textarea>
+        
+        <label for="image">Imagem (opcional):</label>
+        <input type="file" id="image" name="image">
+        
         <button type="submit">Criar Notícia</button>
     </form>
-    <br><br>
-    <a href="index.php">Home</a>
-    <br><br>
-    <a href="logout.php">Sair</a>
+
+    <div class="footer-links">
+        <a href="index.php">Home</a>
+        <br><br>
+        <a href="logout.php">Sair</a>
+    </div>
+</div>
 </body>
 </html>

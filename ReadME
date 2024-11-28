@@ -1,0 +1,20 @@
+Football News Portal
+Este é um projeto desenvolvido para a disciplina Desenvolvimento Web 2. O objetivo é criar um portal de notícias focado em futebol, onde usuários podem publicar, aprovar ou visualizar notícias. Este projeto aborda conceitos de front-end e back-end utilizando HTML, CSS, PHP e banco de dados MySQL.
+
+Funcionalidades
+Cadastro de Usuários: Permite que novos usuários se cadastrem.
+Login e Autenticação: Sistema de autenticação para controlar o acesso ao portal.
+Publicação de Notícias: Usuários do tipo "escritor" podem criar notícias que serão enviadas para aprovação.
+Aprovação de Notícias: Usuários do tipo "administrador" podem aprovar ou rejeitar notícias.
+Visualização de Notícias: Notícias aprovadas são exibidas na página inicial.
+
+Para rodar, você pode optar por importar na sua máquina os arquivos sql, jornal_user e jornar_posts
+Ou se preferiri importar em uma única vez jornal att.sql, entretanto ele não terá nenhuma notícias
+
+Login 
+adm:
+email: teste@email.com 
+senha: 123
+escritor:
+email: escritor@email.com
+senha: 123

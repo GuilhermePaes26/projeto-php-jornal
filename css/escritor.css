@@ -1,0 +1,94 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d3d3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #f5f3eb;
+  width: 400px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+.container h1 {
+  font-size: 24px;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.container p {
+  font-size: 14px;
+  color: #006600;
+  margin-bottom: 20px;
+}
+
+.container form {
+  text-align: left;
+}
+
+.container label {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #003366;
+}
+
+.container input[type="text"],
+.container textarea,
+.container input[type="file"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  background-color: #f9f9f9;
+}
+
+.container input[type="text"]:focus,
+.container textarea:focus {
+  border-color: #003366;
+}
+
+.container button {
+  background-color: #003366;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.container button:hover {
+  background-color: #002244;
+}
+
+.container .footer-links {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.container .footer-links a {
+  color: #003366;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.container .footer-links a:hover {
+  color: #0066cc;
+}

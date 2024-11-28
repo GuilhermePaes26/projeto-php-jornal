@@ -9,7 +9,7 @@ if (!isset($_SESSION['email']) || $_SESSION['tipo'] !== 'adm') {
 $host = "localhost";
 $dbname = "jornal";
 $username = "root";
-$password = "";
+$password = "Gui26*";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -43,36 +43,36 @@ if (isset($_GET['action']) && isset($_GET['id_post'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprovação de Notícias</title>
+    <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
+<div class="container">
     <h1>Aprovar Notícias</h1>
 
     <?php if (empty($posts)) : ?>
         <p>Não há notícias pendentes para aprovação.</p>
-        <br><br>
-        <a href="index.php">Home</a>
-        <br><br>
-        <a href="logout.php">Sair</a>
     <?php else : ?>
-        <ul>
-        <?php foreach ($posts as $post) : ?>
-            <li>
-                <strong><?php echo htmlspecialchars($post['title']); ?></strong><br>
-                <p><?php echo htmlspecialchars($post['content']); ?></p>
+        <ul class="news-list">
+            <?php foreach ($posts as $post) : ?>
+                <li>
+                    <strong><?php echo htmlspecialchars($post['title']); ?></strong>
+                    <p><?php echo htmlspecialchars($post['content']); ?></p>
 
-                <?php if (!empty($post['image'])) : ?>
-                    <img src="<?php echo htmlspecialchars($post['image']); ?>" alt="Imagem da notícia" width="200"><br>
-                <?php endif; ?>
+                    <?php if (!empty($post['image'])) : ?>
+                        <img src="<?php echo htmlspecialchars($post['image']); ?>" alt="Imagem da notícia">
+                    <?php endif; ?>
 
-                <a href="?action=aprovar&id_post=<?php echo $post['id_post']; ?>">Aprovar</a> |
-                <a href="?action=rejeitar&id_post=<?php echo $post['id_post']; ?>">Rejeitar</a>
-            </li>
-        <?php endforeach; ?>
+                    <a href="?action=aprovar&id_post=<?php echo $post['id_post']; ?>">Aprovar</a> |
+                    <a href="?action=rejeitar&id_post=<?php echo $post['id_post']; ?>">Rejeitar</a>
+                </li>
+            <?php endforeach; ?>
         </ul>
-        <br><br>
-    <a href="index.php">Home</a>
-        <br><br>
-        <a href="logout.php">Sair</a>
     <?php endif; ?>
+
+    <div class="footer-links">
+        <a href="index.php">Home</a>
+        <a href="logout.php">Sair</a>
+    </div>
+</div>
 </body>
 </html>

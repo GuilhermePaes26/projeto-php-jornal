@@ -3,7 +3,7 @@
     $host = "localhost";
     $dbname = "jornal";
     $username = "root";
-    $password = "";
+    $password = "Gui26*";
 
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -44,27 +44,34 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/cadastro.css">
         <title>Login</title>
     </head>
-    <body>
+    <div class="container">
+    <div class="header">
+        <img src="./img/bola.png" alt="Logo">
         <h1>Login</h1>
+    </div>
 
-        <?php if (isset($erro)) : ?>
-            <p style="color: red;"><?php echo $erro; ?></p>
-        <?php endif; ?>
+    <?php if (isset($erro)) : ?>
+        <p style="color: red;"><?php echo htmlspecialchars($erro); ?></p>
+    <?php endif; ?>
 
-        <form action="" method="POST">
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label for="senha">Senha:</label><br>
-            <input type="password" id="senha" name="senha" required><br><br>
-
-            <button type="submit">Entrar</button>
-        </form>
-        <br><br>
-    <a href="index.php">Home</a>
-        <h3>Não possui o cadastro?<h3>
+    <form action="" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+        
+        <button type="submit">Entrar</button>
+    </form>
+    
+    <div class="footer">
+        <a href="index.php">Home</a>
+        <h3>Não possui cadastro?</h3>
         <a href="./cadastro.php">Cadastre-se</a>
+    </div>
+</div>
     </body>
     </html>

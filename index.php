@@ -2,7 +2,7 @@
 $host = "localhost";
 $dbname = "jornal";
 $username = "root";
-$password = "";
+$password = "Gui26*";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -22,31 +22,38 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
     <title>Notícias</title>
 </head>
 <body>
-    <h1>Notícias Publicadas</h1>
+<div class="header">
+    <img src="./img/bola.png" alt="Logo">
+    Football News Portal
+    <img src="./img/bola.png" alt="Logo">
+</div>
 
+<div class="action-links">
+    <a href="./cadastro.php">Cadastre-se</a>
+    <a href="./login.php">Entrar</a>
+    <a href="./logout.php">Sair</a>
+</div>
+
+<div class="grid-container">
     <?php if (empty($posts)) : ?>
-        <a href="./cadastro.php">Cadastre-se</a>
-        <br><br>
-        <a href="./login.php">Entrar</a>
-        <br><br>
-        <a href="./logout.php">Sair</a>
         <p>Não há notícias publicadas ainda.</p>
     <?php else : ?>
         <?php foreach ($posts as $post) : ?>
-            <div>
+            <div class="card">
+                <?php if (!empty($post['image'])) : ?>
+                    <img src="<?php echo htmlspecialchars($post['image']); ?>" alt="Imagem">
+                <?php else : ?>
+                    <img src="placeholder.jpg" alt="Imagem genérica">
+                <?php endif; ?>
                 <h2><?php echo htmlspecialchars($post['title']); ?></h2>
                 <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
-                
-                <?php if (!empty($post['image'])) : ?>
-                    <img src="<?php echo htmlspecialchars($post['image']); ?>" alt="Imagem" width="300">
-                <?php endif; ?>
-                
-                <hr>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
+</div>
 </body>
 </html>
