@@ -31,6 +31,8 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a href="./cadastro.php">Cadastre-se</a>
         <br><br>
         <a href="./login.php">Entrar</a>
+        <br><br>
+        <a href="./logout.php">Sair</a>
         <p>Não há notícias publicadas ainda.</p>
     <?php else : ?>
         <?php foreach ($posts as $post) : ?>
