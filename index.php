@@ -11,31 +11,10 @@ try {
     die("Erro de conexão: " . $e->getMessage());
 }
 
-function cadastrar($email, $senha, $type) {
-    global $pdo;
-
-    $sql = "INSERT INTO user (email_user, password_user, type_user) VALUES (:email, :senha, :type)";
-    $stmt = $pdo->prepare($sql);
-
-    $stmt->execute([
-        ':email' => $email,
-        ':senha' => password_hash($senha, PASSWORD_DEFAULT),
-        ':type' => $type
-    ]);
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $type = $_POST['type'];
-
-    try {
-        cadastrar($email, $senha, $type);
-        $mensagem = "Cadastro realizado com sucesso!";
-    } catch (Exception $e) {
-        $mensagem = "Erro ao cadastrar: " . $e->getMessage();
-    }
-}
+$sql = "SELECT * FROM posts WHERE status = 'aprovado' ORDER BY created_at DESC";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -43,28 +22,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Notícias</title>
 </head>
 <body>
-    <h1>Formulário de Cadastro</h1>
+    <h1>Notícias Publicadas</h1>
 
-    <?php if (isset($mensagem)) : ?>
-        <p><?php echo $mensagem; ?></p>
+    <?php if (empty($posts)) : ?>
+        <a href="./cadastro.php">Cadastre-se</a>
+        <br><br>
+        <a href="./login.php">Entrar</a>
+        <p>Não há notícias publicadas ainda.</p>
+    <?php else : ?>
+        <?php foreach ($posts as $post) : ?>
+            <div>
+                <h2><?php echo htmlspecialchars($post['title']); ?></h2>
+                <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
+                
+                <?php if (!empty($post['image'])) : ?>
+                    <img src="<?php echo htmlspecialchars($post['image']); ?>" alt="Imagem" width="300">
+                <?php endif; ?>
+                
+                <hr>
+            </div>
+        <?php endforeach; ?>
     <?php endif; ?>
-
-    <form action="" method="POST">
-        <label for="nome">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="email">Senha:</label><br>
-        <input type="password" id="senha" name="senha" required><br><br>
-
-        <label for="type">Tipo:</label><br>
-        <input type="text" id="type" name="type" required><br><br>
-
-        <button type="submit">Cadastrar</button>
-    </form>
-    <h3>Já possui o cadastro?<h3>
-    <a href="./login.php">Entrar</a>
 </body>
 </html>
