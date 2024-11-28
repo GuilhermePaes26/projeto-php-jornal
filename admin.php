@@ -50,6 +50,8 @@ if (isset($_GET['action']) && isset($_GET['id_post'])) {
     <?php if (empty($posts)) : ?>
         <p>Não há notícias pendentes para aprovação.</p>
         <br><br>
+        <a href="index.php">Home</a>
+        <br><br>
         <a href="logout.php">Sair</a>
     <?php else : ?>
         <ul>
@@ -67,6 +69,8 @@ if (isset($_GET['action']) && isset($_GET['id_post'])) {
             </li>
         <?php endforeach; ?>
         </ul>
+        <br><br>
+    <a href="index.php">Home</a>
         <br><br>
         <a href="logout.php">Sair</a>
     <?php endif; ?>

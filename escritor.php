@@ -74,6 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Criar Notícia</button>
     </form>
     <br><br>
+    <a href="index.php">Home</a>
+    <br><br>
     <a href="logout.php">Sair</a>
 </body>
 </html>

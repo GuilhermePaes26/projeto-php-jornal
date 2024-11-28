@@ -62,6 +62,8 @@
 
             <button type="submit">Entrar</button>
         </form>
+        <br><br>
+    <a href="index.php">Home</a>
         <h3>Não possui o cadastro?<h3>
         <a href="./cadastro.php">Cadastre-se</a>
     </body>
